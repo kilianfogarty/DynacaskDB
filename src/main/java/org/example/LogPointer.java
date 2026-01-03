@@ -1,11 +1,11 @@
 package org.example;
 
 public class LogPointer {
-    long offset;
-    int size;
+    public final long recordStart;
+    public final int size;
 
-    public LogPointer(long offset, int size) {
-        this.offset = offset;
+    public LogPointer(long recordStart, int size) {
+        this.recordStart = recordStart;
         this.size = size;
     }
 }
