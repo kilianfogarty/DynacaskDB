@@ -29,7 +29,12 @@ public class LogFile {
         while(file.getFilePointer() < file.length()) {
             long recordStart = file.getFilePointer();
             Record record = Record.readFrom(file);
-            keyDir.put(record.key, recordStart, record.valueBytes.length);
+
+            if (record.isTombstone()) {
+                keyDir.delete(record.key);
+            } else {
+                keyDir.put(record.key, recordStart, record.valueBytes.length);
+            }
         }
     }
 

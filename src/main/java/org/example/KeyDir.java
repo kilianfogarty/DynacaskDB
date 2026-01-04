@@ -13,4 +13,8 @@ public class KeyDir {
         return keyDir.get(key);
     }
 
+    public void delete(String key) {
+        keyDir.remove(key);
+    }
+
 }

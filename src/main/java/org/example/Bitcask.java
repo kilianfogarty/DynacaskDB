@@ -61,6 +61,12 @@ public class Bitcask {
          */
     }
 
+    public void delete(String key) throws IOException{
+        Record tombstone = new Record(key, null);
+        logFile.append(tombstone);
+        keyDir.delete(key);
+    }
+
     /*
     private void loadKeyDir() throws IOException {
         file.seek(0);
